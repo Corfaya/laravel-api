@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects');
+Route::get('/latest_projects', [ProjectController::class, 'latest'])->name('latest_projects');
 // Thunder Client returns data requested

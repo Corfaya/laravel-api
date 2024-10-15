@@ -15,4 +15,12 @@ class ProjectController extends Controller
             'results' => $projects
         ]);
     }
+
+    public function latest() {
+        $projects = Project::with('type', 'technologies')->orderBy('id', 'DESC')->limit(3)->get();
+        return response()->json([
+            'success' => true,
+            'results' => $projects
+        ]);
+    }
 }
