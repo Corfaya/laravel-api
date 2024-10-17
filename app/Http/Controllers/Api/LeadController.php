@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class LeadController extends Controller
 {
-    //
+    public function store(Request $request) {
+        $form_data = $request->all();
+
+    }
 }
