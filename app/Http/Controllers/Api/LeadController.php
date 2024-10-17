@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,5 +30,17 @@ class LeadController extends Controller
             'phone.max' => 'Non puoi superare i :max caratteri',
             'email_address.max' => 'Non puoi superare i :max caratteri',
         ]);
+
+        if($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ]);
+        }
+
+        $new_lead = new Lead();
+        $new_lead->fill($form_data);
+
+        $new_lead->save();
     }
 }
