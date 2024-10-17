@@ -6,4 +6,4 @@
     <li><strong>@</strong>: {{ $lead->email_address }}</li>
 </ul>
 <p><strong style="color:brown">The message</strong>:</p>
-<p>{{$lead->content}}</p>
+<p><strong>"</strong> {{$lead->content}} <strong>"</strong></p>
