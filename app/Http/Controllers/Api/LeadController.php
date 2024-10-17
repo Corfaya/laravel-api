@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
+use App\Mail\NewContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class LeadController extends Controller
 {
@@ -42,5 +44,8 @@ class LeadController extends Controller
         $new_lead->fill($form_data);
 
         $new_lead->save();
+
+        //send email
+        Mail::to('hello@example.com')->send(new NewContact($new_lead));
     }
 }
